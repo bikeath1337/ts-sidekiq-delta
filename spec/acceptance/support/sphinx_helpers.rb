@@ -1,5 +1,4 @@
 module SphinxHelpers
-  include Sidekiq::Util
 
   def sphinx
     @sphinx ||= SphinxController.new

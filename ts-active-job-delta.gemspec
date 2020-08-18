@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.email       = ['bikeath1337@me.com']
   s.homepage    = 'https://github.com/bikeath1337/ts-activejob-delta'
   s.summary     = %q{Thinking Sphinx - ActiveJob Deltas}
-  s.description = %q{Manage delta indexes via Sidekiq for Thinking Sphinx}
+  s.description = %q{Manage delta indexes via ActiveJob for Thinking Sphinx}
   s.license     = 'MIT'
 
   s.files         = `git ls-files`.split("\n")

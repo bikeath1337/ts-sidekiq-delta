@@ -4,26 +4,6 @@ class ThinkingSphinx::Deltas::ActiveJobDelta < ThinkingSphinx::Deltas::DefaultDe
   JOB_TYPES  = []
   JOB_PREFIX = 'ts-delta'
 
-  # Use simplistic locking.  We're assuming that the user won't run more than one
-  # `rake ts:si` or `rake ts:in` task at a time.
-  def self.lock(index_name)
-    Sidekiq.redis {|redis|
-      redis.set("#{JOB_PREFIX}:index:#{index_name}:locked", 'true')
-    }
-  end
-
-  def self.unlock(index_name)
-    Sidekiq.redis {|redis|
-      redis.del("#{JOB_PREFIX}:index:#{index_name}:locked")
-    }
-  end
-
-  def self.locked?(index_name)
-    Sidekiq.redis {|redis|
-      redis.get("#{JOB_PREFIX}:index:#{index_name}:locked") == 'true'
-    }
-  end
-
   def delete(index, instance)
     return if self.class.locked?(index.reference)
 
