@@ -1,6 +1,10 @@
 Before do
   $queries_executed = []
+<<<<<<< HEAD
   ThinkingSphinx::Deltas::SidekiqDelta.clear!
+=======
+  ThinkingSphinx::Deltas::ActiveJobDelta.clear!
+>>>>>>> c3e53d5... Round 1
   @model      = nil
   @method     = :search
   @query      = ""
@@ -34,7 +38,11 @@ Given "I have data" do
 end
 
 Given "I have indexed" do
+<<<<<<< HEAD
   ThinkingSphinx::Deltas::SidekiqDelta.clear!
+=======
+  ThinkingSphinx::Deltas::ActiveJobDelta.clear!
+>>>>>>> c3e53d5... Round 1
   ThinkingSphinx::Configuration.instance.controller.index
   sleep(1.5)
 end

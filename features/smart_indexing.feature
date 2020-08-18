@@ -1,5 +1,9 @@
 Feature: Smart Indexing
+<<<<<<< HEAD
   In order to have core indexing that works well with resque delta indexing
+=======
+  In order to have core indexing that works well with ActiveJob delta indexing
+>>>>>>> c3e53d5... Round 1
   Developers
   Should be able to use smart index to update core indices
 
@@ -40,4 +44,8 @@ Feature: Smart Indexing
     When I run the smart indexer
     And I run one delayed job
     And I wait for Sphinx to catch up
+<<<<<<< HEAD
     Then there should be no more DeltaJobs on the Resque queue
+=======
+    Then there should be no more DeltaJobs on the ActiveJob queue
+>>>>>>> c3e53d5... Round 1

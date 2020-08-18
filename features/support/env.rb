@@ -17,6 +17,7 @@ world = Cucumber::ThinkingSphinx::InternalWorld.new
 world.configure_database
 
 require 'thinking_sphinx'
+<<<<<<< HEAD
 require 'thinking_sphinx/deltas/resque_delta'
 
 world.setup
@@ -26,6 +27,11 @@ Before do
   Sidekiq.redis{|r| r.flushall}
 end
 
+=======
+
+world.setup
+
+>>>>>>> c3e53d5... Round 1
 require 'database_cleaner'
 require 'database_cleaner/cucumber'
 DatabaseCleaner.strategy = :truncation
