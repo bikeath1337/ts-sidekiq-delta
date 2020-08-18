@@ -17,10 +17,6 @@ When /^I run one delayed job$/ do
   @resque_worker.perform(job)
 end
 
-When /^I cancel the jobs$/ do
-  ThinkingSphinx::Deltas::ActiveJobDelta.clear!
-end
-
 When /^I change the name of delayed beta (\w+) to (\w+)$/ do |current, replacement|
   DelayedBeta.find_by_name(current).update_attributes(:name => replacement)
 end

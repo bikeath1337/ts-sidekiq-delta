@@ -4,26 +4,6 @@ class ThinkingSphinx::Deltas::ActiveJobDelta < ThinkingSphinx::Deltas::DefaultDe
   JOB_TYPES  = []
   JOB_PREFIX = 'ts-delta'
 
-  # LTRIM + LPOP deletes all items from the Resque queue without loading it
-  # into client memory (unlike Resque.dequeue).
-  # WARNING: This will clear ALL jobs in any queue used by a ResqueDelta job.
-  # If you're sharing a queue with other jobs they'll be deleted!
-  def self.clear_thinking_sphinx_queues
-    JOB_TYPES.collect { |job|
-      job.sidekiq_options['queue']
-    }.uniq.each do |queue|
-      Sidekiq.redis { |redis| redis.srem "queues", queue }
-      Sidekiq.redis { |redis| redis.del  "queue:#{queue}" }
-    end
-  end
-
-  # Clear both the resque queues and any other state maintained in redis
-  def self.clear!
-    self.clear_thinking_sphinx_queues
-
-    FlagAsDeletedSet.clear_all!
-  end
-
   # Use simplistic locking.  We're assuming that the user won't run more than one
   # `rake ts:si` or `rake ts:in` task at a time.
   def self.lock(index_name)

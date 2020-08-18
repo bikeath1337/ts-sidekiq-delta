@@ -8,7 +8,10 @@ module SphinxHelpers
   def index(*indices)
     yield if block_given?
 
+<<<<<<< HEAD
     ThinkingSphinx::Deltas::SidekiqDelta.clear_thinking_sphinx_queues
+=======
+>>>>>>> 5047362... Get rid of Queue clearing
     sphinx.index *indices
     sleep 0.25
   end

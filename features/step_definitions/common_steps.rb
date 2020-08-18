@@ -1,10 +1,13 @@
 Before do
   $queries_executed = []
 <<<<<<< HEAD
+<<<<<<< HEAD
   ThinkingSphinx::Deltas::SidekiqDelta.clear!
 =======
   ThinkingSphinx::Deltas::ActiveJobDelta.clear!
 >>>>>>> c3e53d5... Round 1
+=======
+>>>>>>> 5047362... Get rid of Queue clearing
   @model      = nil
   @method     = :search
   @query      = ""
@@ -39,10 +42,13 @@ end
 
 Given "I have indexed" do
 <<<<<<< HEAD
+<<<<<<< HEAD
   ThinkingSphinx::Deltas::SidekiqDelta.clear!
 =======
   ThinkingSphinx::Deltas::ActiveJobDelta.clear!
 >>>>>>> c3e53d5... Round 1
+=======
+>>>>>>> 5047362... Get rid of Queue clearing
   ThinkingSphinx::Configuration.instance.controller.index
   sleep(1.5)
 end
