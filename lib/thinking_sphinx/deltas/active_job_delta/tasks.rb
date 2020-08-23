@@ -1,4 +1,4 @@
-require 'thinking_sphinx/deltas/avtive_job_delta'
+require 'thinking_sphinx/deltas/active_job_delta'
 
 namespace :thinking_sphinx do
   desc 'Lock all delta indices (Resque will not run indexer or place new jobs on the :ts_delta queue).'
