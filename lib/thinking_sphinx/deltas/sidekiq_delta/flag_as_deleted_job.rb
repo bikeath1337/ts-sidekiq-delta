@@ -1,16 +1,10 @@
-class ThinkingSphinx::Deltas::SidekiqDelta::FlagAsDeletedJob
-  include Sidekiq::Worker
-
-  # Runs Sphinx's indexer tool to process the index. Currently assumes Sphinx
-  # is running.
-  sidekiq_options lock: :until_executed, retry: true, queue: 'ts_delta', unique_prefix: "tsflagasdeleted"
+class ThinkingSphinx::Deltas::SidekiqDelta::FlagAsDeletedJob < ActiveJob::Base
+  queue_as :ts_delta
 
   def perform(index, document_id)
+    puts "PERFORM FLAG DELETED AS JOB"
     ThinkingSphinx::Deltas::DeleteJob.new(index, document_id).perform
   rescue Mysql2::Error => error
     # This isn't vital, so don't raise the error
   end
 end
-
-ThinkingSphinx::Deltas::SidekiqDelta::JOB_TYPES <<
-  ThinkingSphinx::Deltas::SidekiqDelta::FlagAsDeletedJob
