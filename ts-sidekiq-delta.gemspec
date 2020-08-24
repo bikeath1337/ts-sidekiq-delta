@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency 'thinking-sphinx', '>= 3.1.0'
-  s.add_dependency 'active-job', '>= 4.2.0'
+  s.add_dependency 'activejob', '>= 4.2.0'
   s.add_dependency 'sidekiq-unique-jobs', '>= 6.0.0'
 
   s.add_development_dependency 'activerecord',     '>= 3.1.0'
